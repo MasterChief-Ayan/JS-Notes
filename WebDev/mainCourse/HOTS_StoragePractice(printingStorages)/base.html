@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+    <h1>localStorage vs sessionStorage in JavaScript</h1>
+    <button id="theme">Switch Theme</button>
+    <h3>Set Data</h3>
+    
+    <form id="inputForm">
+        <strong>Key:</strong> <br>
+        <input type="text" id="idkey" placeholder="Enter the key">
+        <br>
+        <strong>Value:</strong> <br>
+        <input type="text" id="idval" placeholder="Enter the value">
+        <button id="saveLocal"> Save to localStorage</button>
+        <button id="saveSession">Save to sessionStorage</button>
+    </form>
+    
+    <h3>View Data</h3>
+    <button id="viewLocal"> View localStorage</button>
+    <button id="viewSession">View sessionStorage</button>
+    <div id="showbar"></div>
+
+    <h3>Clear Data</h3>
+    <button id="clrLocal"> Clear localStorage</button>
+    <button id="clrSession">Clear sessionStorage</button>
+
+    <h3>Key Differences</h3>
+    <ul>
+        <li><strong>localStorage :</strong> Data persis even after the browser is closed and reopened.</li>
+        <li><strong>sessionStorage : </strong>Data is cleared when the browser tab is closed.</li>
+        <li>Both are limited to the same-origin policy(can only be accessed by page of the same origin).</li>
+    </ul>
+    
+    
+
+</body>
+<script src="script.js"></script>
+</html>

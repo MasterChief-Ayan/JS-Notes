@@ -1,0 +1,19 @@
+.parent{
+    border: 2px solid black;
+    display: flex;
+    flex-direction: row;
+}
+.box{
+    height: 100px;
+    width:100px;
+}
+
+.r{
+    background-color: red;
+}
+.g{
+    background-color: green;
+}
+.b{
+    background-color: blue;
+}
