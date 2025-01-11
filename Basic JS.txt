@@ -1,0 +1,378 @@
+Basic Js
+
+1) use of miniature code inside variable via backticks via `<string> ${<code>} `
+Eg: `${firstName} ${lastName}` where i have given space between
+-> even though "", '', `` are all string 
+2) integer and bigInteger
+3) initially without assigining value and its type is UNDEFINED
+4)NULL being explicitly mention :typeof ==> object **** and value ==> null
+
+5) typeof() 
+
+6) objects -> <Name> = { <data1 NAME  in int,string, etc form> :  <assigned1 NAME in int, string, etc form >,... }
+IMP within a object, each data can be of different datatype individually
+
+7) myarr=["assd",[1,2,2,2],..,]
+
+8) premitive and non-primitive  are non-individually non-changable [STRINGS] and changable [arr]
+**IMP** in non primitive, we cant just compare them as === as it give false
+eg: arr=== brr is false if even if individually they are same
+
+9) Dynamic Typing : reassigining into different datatype of a predeclared variable
+-----------------------------------
+1)!= is not version of == and !== is a not version of ===.
+2) using ""+''+`` is VALID.
+3) alert() and prompt()
+***IMP*** Prompt is taken as a string, thus <prompt var>+ 5 = "75" and not 12; for 7 as the prompt
+
+4)Getline is used to get prompt in react itself
+
+as "
+const readline = require('readline');
+let rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+rl.question("Enter kar le apna name!\n",function(name){
+    console.log(`Hi, ${name}`);
+    rl.close();
+})
+"
+------------------------------------
+
+1)ternary operator and if else syntax is exact same
+2) switch is === and as 
+
+switch (<variable>){
+    case "Monday":
+        console.log("It is the start of the week");
+        break;
+    case "Tuesday":
+        console.log("It is the 2nd day of the week");
+        break;
+    default:
+        console.log("It is a normal working day");
+}
+3)do{
+}while();
+4) We can call function before declaration ***
+
+5) if a <variable>= function <func name> (..){} then we call it as <variable>(..)****
+6) anonymous function, just remove the <func name> from the function declaration.
+const greet = function (name) {
+  console.log(`Hi, ${name}!`);
+};
+
+greet("Bob");  // Outputs: Hi, Bob!
+--------------------------------------------- V>IMP
+1)function outfunc(outvar) {
+  return function infun(invar) {
+    console.log(`Outer: ${outvar}, Inner: ${invar}`);
+  };
+}
+
+const closureExample = outfunc("outside"); //THIS HANDLES THE OUTER FUNCTION 
+closureExample("inside");  // THIS HANDLES FUNCTION OF INSIDE
+
+REALLY IMPORTANT
+// A closure occurs when an inner function "remembers" variables from its outer function even after the outer function has finished executing. This happens when the inner function is returned or passed outside its original scope.
+//when func is return , its retuned function is not runned!!!
+
+2) in js prints as much as its correct until it hits enters*****
+
+3) assigan arrow function to a variable as  <variable> = (){}
+// ONE LINEAR  arrow function dont need  {}.Thus
+
+***SPECIAL***
+const greet = name => `Hello, ${name}!`;
+console.log(greet("Alice"));
+
+
+same as
+
+const greet = (name) => `Hello, ${name}!`;
+console.log(greet("Alice");
+
+
+4)Componenet is:
+
+let person = {
+  name: "Alice",
+  greet: function () {
+    console.log(`Hello, my name is ${this.name}.`);
+  }
+};
+person.greet(); //on printing
+
+//this.name access <this_object>.<property> ////////// this is inherits from the surrounding in case of arrow function!!!!
+i.e. if it will show undefined if not present in the global scope as it cant access the value inside the object
+///V.IMP - but arrow func works fine when used instead another normal function with this keyword
+
+eg:
+const person = {
+  name: "Alice",
+  hobbies: ["reading", "cycling", "traveling"],
+  showHobbies: function () {
+    this.hobbies.forEach(hobby => {
+      console.log(`${this.name} likes ${hobby}.`);
+    });
+  }
+};
+
+person.showHobbies();
+
+//OP
+Alice likes reading.
+Alice likes cycling.
+Alice likes traveling.
+
+or a simple example
+
+let first={
+    bhai: true,
+    show1: function (){
+        let a=()=>{
+            console.log(`He is my ${this.bhai} bhai`);
+        }
+        a();// if we dont call it , the inner function wont even run at the first place
+        
+    }
+};
+
+
+5) MAP how to use *****
+
+let <new arr> = <old arr>.map( x => <any mathematical transformation of x);
+//NOTE: It cant be used if we use arrow function instead of a normal function
+
+-------------------------------------------
+
+1) access objects as
+
+first.bhai  or first[bhai] // if its was witten as ""bhai, the write "bhai" in bracket
+//  also you can do 
+let temp= "bhai";
+ then access it as first[temp];   ***
+2) HOTS
+difference between      delete myObj.greet    and   delete myObj.greet()
+is that , the one with () executes the greet function and then deletes it.
+
+ADD-ON: only add via dot as brackets are used when there elemet is already present in the object.
+3)
+example of nested objects
+
+let myObj ={
+    "name": "Ayan",
+    //nested object
+    zyada: {
+        location: "Bhavanipur",
+        year: 2024,
+        bye: () => {
+            console.log("Bye my friend");
+        }
+    }
+}
+
+access the nested object function as
+myObj.zyada.bye();
+
+4) Got undefined which i tried to use this function inside a greet function of an object, guess why?? 
+5)*** normally it prints without quotes, unless the inner quotes is covered by some other outer quotes***
+6)VVV IMP***********************
+if the object is defined without quotes then it can be called via brackets(i.e. []) with/without quotes i.e. bhai or "bhai"
+
+BUT
+
+if its defined with quotes, then only quotes can access it
+
+end*****************************
+7)recall const properties for an object
+- can add, modify elements as well as delete them
+-Just not allowed to completely re assign them
+8)access of non existing properties of objects  ===> undefined
+
+----
+1)ARRAY methods
+-push()    -pop()    -shift()    for removel  -unshift()
+-splice(a,b) or splice(a,b,c)
+  where a -> starting index to be removed
+	b -> number of elemets to be removed from a index 
+	c -> item to be added here & can be of the form  z,y,x,a1,a2,a3
+	i.e. splice(a,b,z,y,x,a1,a2,a3)
+-slice(<start idx>, <number of elements from here +1>)
+eg: let brr=arr.slice(2,5);
+
+2) auto function in JS
+	for( let i of arr){} // SO, use "of" term
+3)arr.forEach(<function>);
+
+eg
+- (value,index) => {
+	//to do
+}
+/(value) => {
+	//to do
+}
+4) for string as well as arrays we can use <variable>.length
+
+
+5) MAP(it  always assign to another**************)
+
+brr=arr.map((a)=><to do>); eg: <todo> a*a
+brr=arr.map((a,b)=><to do>);
+brr=arr.map((a,b,c)=><to do>);
+
+where
+-a is the value of the element
+- b is the inex of the element
+- c is the array of the element
+
+6)FILTER(it  always assign to another**************)
+
+arr.filter((value) =>{
+	return //something which gives true for the desired elements
+})
+
+//say value%2==1
+
+7)REDUCE    IMP(  to get some accumulated single value form the array)
+
+let x = arr.reduce((a,cur) => func(a,cur),c);
+
+on each element a= func(a,cur) with a initially as a=c
+//quick example is to get array sum
+
+***Additional use case[NOTE: here there is curly brackets]
+
+let brr=arr.reduce((acc,cur) => {
+	acc.push(cur);//                          line 1.01
+	return acc;
+},[]);
+
+//to replicate the arr into brr
+
+****NOTE Reduce is soo powerfull that we can make it work like filer or even map as pushing modified data in line 1.01 or adding conditional statement to line 1.01
+
+8) To add another array elements into a array 
+
+- use spread 
+ as <destination arr>.push(...<desired arra>);
+
+*** IMP
+
+but how to add object into another object???
+
+
+let obj2={
+	a:x,
+	b:y
+}
+
+let objDestination = {
+	bekar: 21,
+	age: 12,
+	...obj2
+}
+***
+9) REST PARAMETER    (analog to rest of the parameters)
+
+if you dont know how many parameters are there but want to use them in the function
+
+define function as
+
+function bekar(...items){
+	let sum=0;
+	for(let i of items){
+	    sum+=i;
+	}
+	return sum;
+}
+
+// now u can call the function as bekar()  or bekar (a,b,.....)
+
+------------------------------------------------
+
+
+Strings
+
+1) length - s.length
+2) indexOf() // even for substr with starting idx  & -1 if not found 
+3)toUpperCase()  // creates (not modifies) as arr.to UpperCase()
+4)toLoweCase()
+5)slice() // creates substring as s.slice(<start idx>,<end>);
+6)split()
+// tokenizing by removing delimiter
+
+let arr=s.split(",");  // stores them inside a array
+for multiple delimiters use
+s.split(/[,.;\s']+/); fir    , . ; <space> '
+****Above is IMP ******
+
+
+-------------
+Maths
+
+Math.ceil() round upper
+Math.round() round lower 0.5 ->  1
+Math.floor() gif
+
+Math.random() ->decimal from 0 to 1 (exclusive)****
+
+parseInt(<string here>)  method converts a string into an integer by ignoring any decimal part. and any other part
+parseFloat(<string>) 
+
+NOTE:
+The parseInt() & parseFloat() function in JavaScript only considers the initial integer & float respecttively at the start of the string and ignores any characters that come after the number.
+
+
+***************
+	JS HAS FLOAT PRECISION ERRORS
+eg: console.log(0.1 + 0.2);  // Outputs: 0.30000000000000004
+
+***************
+
+ERROR  handelling
+
+try...catch
+
+try{
+	// do something risky
+}
+catch(error){
+	// if error occurs
+}
+finally{
+	//This will always run.
+}
+//sometimes code after cath does not work and to print every single time regardless of error occurring  we use finally function
+
+//FOLLOW UP
+
+use throw to give custom error statement in try block
+
+
+
+try{
+	if(<cond>){
+		throw Error ("cant do this");
+	}
+	// Error goes to nearest catch statement and if it uses  error.message then it is assigned to "cant do this"
+	
+}
+catch(error){
+	// if error occurs
+	console.log("Error:", error.message);
+}
+finally{
+	//This will always run.
+}
+
+
+
+
+
+
+
+
+

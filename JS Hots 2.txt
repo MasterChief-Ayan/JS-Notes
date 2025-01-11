@@ -1,0 +1,215 @@
+JS Hots 2 (forgot using double quotes in assigning, Darn It!)
+
+Window object
+
+Its a global browser object.
+
+//***  SPECIAL, when we want to print on loading of web, 
+window.onload = function() {alert("Welcome to the site!");};
+
+window.location: Provides information about the current URL, and allows URL changes or reloads.
+window.history: Controls the browsing history (e.g., go back or forward.
+
+window.innerWidth and window.innerHeight: Provide the dimensions of the window’s visible area.
+
+window.alert(), window.confirm(), and window.prompt(): Methods for simple user interaction (we’ll dive into these later).
+
+
+DOM is accessed via document object and for PAGE CONTENT & STRUCTURE MANUPULATION
+--------------------------------------------------
+
+Manipulating URLs with the location Object
+
+Location objects
+
+href: Returns the entire URL of the page.
+protocol: Returns the protocol (http: or https:).
+hostname: Returns the domain name of the web host (e.g., www.example.com).
+pathname: Returns the path portion of the URL after the domain(hostname).
+search: Returns the query string (e.g., ?id=123&name=John).
+hash: Returns the hash (#section is its id), if any.
+//HASH is very useful for navigation user to a specific field in the web page
+
+eg;
+location.href;
+
+
+Reading and Changing URL Properties
+
+some /all may not work with arrow function, ********** IMP ***********
+
+Eg;
+btn1.addEventListener("click",  {
+    location.hash="targetBox";
+});
+
+
+Redirecting Users
+
+1. Redirecting to a New URL
+
+location.href = "<https://www.example.com/new-page.html>";
+
+2. Using location.assign() for Redirects  *****SIMILAT TO href allocation***
+
+location.assign("<https://www.example.com/another-page.html>");
+
+3. Redirecting Without Adding to Browser History(cant back to the cur page)
+
+location.replace("<https://www.example.com/replacement-page.html>");
+
+4*.Refreshing the Page
+To reload the current page, use the location.reload() method. You can specify true to force a reload from the server (bypassing the cache) or leave it empty to reload from the cache:
+
+location.reload();    // Reloads from cache
+location.reload(true);  // Forces a reload from the server
+
+-------------------------------------------------------
+
+
+***IMP***IMP***IMP***IMP***IMP***IMP***IMP***IMP***IMP***IMP***
+
+Local Storage and Session Storage
+1)
+// Local storing
+localStorage.setItem("username", "Alice");
+
+// Session storing
+sessionStorage.setItem("sessionID", "123456");
+
+2)
+With the key as the argument.
+
+// Get from local storage
+const username = localStorage.getItem("username");
+console.log(username); // Outputs: "Alice"
+
+// Get from session storage
+const sessionID = sessionStorage.getItem("sessionID");
+console.log(sessionID); // Outputs: "123456"
+
+3)
+NOTE:
+
+web storage stores only strings,
+convert non-string data (e.g., objects, arrays) using 
+
+JSON.stringify() and JSON.parse().
+
+// Storing an object
+const user = { name: "Alice", age: 25 };
+localStorage.setItem("user", JSON.stringify(user));
+
+// Retrieving the object
+const storedUser = JSON.parse(localStorage.getItem("user"));
+console.log(storedUser.name); // Outputs: "Alice"
+
+4)
+localStorage.removeItem("username"); // Removes "username" from local storage
+sessionStorage.removeItem("sessionID"); // Removes "sessionID" from session storage
+4.1)
+localStorage.clear(); // Clears all data from local storage
+sessionStorage.clear(); // Clears all data from session storage
+
+
+5)HOTS Ques) printing existing local storage keys and values
+
+const theDiv=document.getElementById("showbar");
+const btnViewLocal=document.getElementById("viewLocal");
+
+btnViewLocal.addEventListener("click", function () {
+
+    const keys = Object.keys(localStorage);  // Fetch all keys
+
+    if(!keys.length){ //if nothing exist
+        theDiv.innerHTML =`<h3>Local Storage</h3><p>Nothing Found!</p>`;
+        return;
+    }
+	//else it does exists
+    theDiv.innerHTML =`<h3>Local Storage</h3><ul>`;
+    keys.forEach(key => {
+        const value = localStorage.getItem(key);
+        theDiv.innerHTML += `<li>Key: ${key} | Value:${value}</li>`;
+    });
+    theDiv.innerHTML +=`</ul>`;
+    
+})
+----------------------------------------------
+JSON?
+
+JSON (JavaScript Object Notation) is a data format used to structure data as key-value pairs in a way that’s both human-readable and machine-friendly. JSON has become a universal standard for data exchange because it’s lightweight, simple to read, and compatible with most programming languages.
+
+Eg;
+
+//This is a object JSON
+{
+  "name": "Alice",
+  age: 30,
+  "isStudent": false,
+  "courses": ["Math", "Science", "Art"]
+}
+
+//This is a string JSON
+
+
+'{
+  "name": "Alice",
+  "age": 30,
+  "isStudent": false,
+  "courses": ["Math", "Science", "Art"]
+}'
+
+Why Use JSON?
+
+-Cross-Platform Compatibility: 
+-Lightweight and Efficient: 
+-Easy to Read and Write:
+
+
+JSON Conversion
+
+1) Parsing
+
+const user = JSON.parse(jsonString); //makes string to obj
+
+**************NOTE: Use try and catch block for parsing
+Eg;
+
+try {
+  const user = JSON.parse(jsonString);
+  console.log(user);
+} catch (error) {
+  console.error("Invalid JSON:", error.message);
+}
+
+2)Stringifying
+
+Eg;
+const jsonString = JSON.stringify(user);
+console.log(jsonString);
+
+
+***IMPRESSIVE TIP**
+
+make it readable by using
+
+JSON.stringify(user,null,2);
+*******************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

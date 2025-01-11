@@ -1,0 +1,221 @@
+JS Hots (dont use 2 double quotes , causes error in html)
+
+1)
+when u want to use function in parameter from globally made function 
+--> use <function> instead of <function>()
+
+2)Dynamically create element of HTML via JS
+Eg;
+
+const x=document.createElement("div");
+x.id = "x-id";
+x.textContent = "<some text>";
+
+2.1) How to add these elements
+
+--> appendChild():
+
+Eg;
+const p=document.getElementById("papa");
+p.appendChild(x);
+
+--> append():
+
+p.append(, , , ...); // ************Can also send strings and obv the nodes
+
+
+
+
+2.2) Insertion at specific location:
+
+--> insertBefore():
+
+insert element BEFORE a specified child element of the parent.
+
+Eg;
+<parent from DOM>.insertBefore(<element to be inserted via DOM>, <specified child via DOM>);
+
+-->inserAdjacentElement():
+
+specify exact location where to insert  via
+
+~beforebegin
+~afterbegin
+~beforeend
+~afterend
+
+Eg;
+<reference element via DOM>.insertAdjacentElement("beforebegin",<element via DOM>);
+
+
+2.3)Removind elements form DOM
+
+--> remove():
+
+works without parent
+
+Eg;
+const elem=document.getElementById("<its ID>");
+<elementToRemove>.remove();
+
+
+IMP NOTE:
+
+If you only want to delete the parent but keep the children intact, you can use this approach:
+
+const parent = document.querySelector("#parent");
+const children = [...parent.children]; // Spreading children into an array
+parent.replaceWith(...children); // Replaces parent with its children
+----------------------------------------------------------------------------
+
+Events         
+***as "this" keyword as input for making it element in func (this.value)  ****
+*********  as "event" keyword for sending object (access as x.key)  ********
+
+1. Mouse Events
+
+click: Triggered when an element is clicked.
+dblclick: Triggered when an element is double-clicked.
+mouseover: Triggered when the mouse pointer enters an element.
+mouseout: Triggered when the mouse pointer leaves an element.
+
+Eg;
+//In HTML
+<button id="button2" onclick="searchFunc();" onmouseover="mouseEntry(this);" onmouseout="mouseExit(this);">Search</button>
+
+//In JS
+
+function searchFunc(){
+    const temp=document.getElementById("box");
+    temp.style.backgroundColor === "white"? temp.style.backgroundColor = "black" : temp.style.backgroundColor ="white" ;
+}
+
+function mouseEntry(temp){
+    temp.style.backgroundColor = "rgb(25, 6, 240)";
+    temp.style.height ="100px";
+    temp.style.width ="100px";
+}
+function mouseExit(temp){
+    temp.style.backgroundColor = "rgb(138, 43, 226)";
+    temp.style.height ="100px";
+    temp.style.width ="80px";
+}
+
+
+2. Keyboard Events (best with  "event" when passed as value to function)
+
+keydown: Triggered when a key is pressed down.
+keypress: Triggered when a key is pressed down and held.
+keyup: Triggered when a key is released.
+
+Eg;
+<input type="text" onkeydown="console.log('Key pressed!')">
+
+
+3. Form Events
+
+
+input: Triggered when the value of an input field changes, allowing you to track changes in real time.
+
+eg:
+//HTML
+        <input type="text" id="roll" oninput="input(this)" > 
+//JS
+function input(temp){
+    console.log(temp.value);
+}
+
+
+change: Triggered when the value of an input field changes and the user leaves the field.
+
+//********* It does not execute if the input remain unchanged even after intermediate modification*************//
+
+eg:
+//HTML
+        <input type="text" id="roll" onchange="input(this)" > 
+//JS
+function input(temp){
+    console.log(temp.value);
+}
+
+
+focus: Triggered when an input field gains focus (e.g., when a user clicks or tabs into it).
+
+
+
+blur: Triggered when an input field loses focus (e.g., when a user clicks away or tabs out). /// OPPOSITE OF FOCUS
+
+
+4. Document Events *** allows to write the js part of html to be in Js only
+
+Document events are triggered by actions that affect the entire webpage, such as loading the content. These events are useful for managing content loading and ensuring that elements are fully accessible before interacting with them.
+
+
+DOMContentLoaded: just after HTML loading is done and before CSS and JS
+
+//***********  Can write this if it  was not a arrow function   *********//
+EG 1111111111
+const x=document.getElementById("name");
+
+x.addEventListener("mouseover",() =>{
+    x.style.backgroundColor="red";   /*this.style.backgroundColor="red";*/
+
+});
+x.addEventListener("mouseout",() =>{
+    x.style.backgroundColor="black";
+});
+Eg 222222222222 (when dealing with event keyword)
+
+x.addEventListener("keydown",() =>{
+    x.style.backgroundColor="black";
+});
+
+
+load: after all execution
+
+
+
+HOTS QUESTION ) 
+Create a dropdown menu with options like "Dog", "Cat", and "Bird".
+
+Use the change event to log the selected animal to the console when the user makes a selection.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

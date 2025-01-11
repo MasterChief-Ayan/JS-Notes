@@ -1,0 +1,204 @@
+Basic Js2
+
+1)The defer attribute defers JavaScript execution until after HTML parsing is complete
+
+2)elements selection for HTML
+
+-getElementById()   -getElementsByClassName()
+Eg:
+
+const <vatiable> = document.getElementById("<id name>");    ///This must be inside quotes
+
+:.:.:. for modification of the data use this
+
+<<variable>.textContent = "<text to appear>";
+
+
+***IMP NOTE***
+
+for getElementsByClassName()  it returns HTMLCollection (iterable and live)instead of array 
+
+-> Can iterate over it via "for...of"/ "normal for"   BUT NOT "forEach"
+
+3)elements selection for CSS
+
+
+-querySelector()   // returns the first match element
+
+say  we want to access 1st para under div i.e.   div-> p
+So,
+
+const <var>=document.querySelector("div p");
+
+
+
+//*****IMP method*****************//
+
+document.querySelector(".<classname>")
+document.querySelector("#<idname>")
+
+//*************************************//
+
+
+
+&
+
+-querySelectorAll()
+
+it returns NODE LIST, which is static
+
+Eg:
+
+const <var>=document.querySelectorAll("div p");
+for(let i=0;i<<var>.length;i++){
+	<var>[i].textContent = "<something>";
+}
+4)
+
+
+do styling via
+-<var>.style.border ="2px solid black";
+-<variable>.style.color ="blue";
+-<var>.style.width ="100px";
+
+
+
+
+
+----------------------------------------------
+
+1)Modification  and styles via JS (WITHOUT RELOADING)
+
+-For Text Content
+Eg:
+const element = document.getElementById("example");
+
+console.log(element.innerText);    // Outputs: "This is text."
+console.log(element.textContent);  // Outputs: "This is hidden text."
+
+//Also, textContent is faster than innerText as no COMPUTATION OF CSS
+
+
+-HOW to modifiy content?
+
+
+DONT USE innerText="something" as it will remove all the <p> tags and others but use innerHTML = "something" for work.
+Eg:
+
+
+container.innerHTML = "<strong>Welcome!</strong> This is a dynamic message.";
+
+//will make the tags as tags instead of text as done in innerText
+
+//SECRUTIY : use trusted source for insertion in html
+
+
+2)For CSS via Js
+
+//Eg button animation on clicking
+
+<button onclick="<function()>">text here</button>
+
+
+in Js
+
+function changecolor(){
+	const myDiv = document.getElementById("<id_name>");
+	myDiv.style.background ="lightgreen";
+}
+
+
+3)
+//Best Practice is Adding and Removing CSS classes
+instead of line-by-line editing css classes
+
+Eg;
+
+in css;
+
+.green-text{
+background-color : black;
+color: lightblue;
+}
+
+in Js;
+
+myDiv.classList.add("green-text");
+//or
+myDiv.classList.toggle("green-text");//adds to this class if missing else removes it from this class
+//or
+myDiv.classList.remove("green-text");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
