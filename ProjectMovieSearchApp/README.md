@@ -1,3 +1,6 @@
+# **About**
+[Watch the Preview of the Project](https://www.youtube.com/watch?v=oXsEcLsaDYo)
+
 # **Review**
 
 For a first JavaScript project, I would rate this code around **75/100**. Here's why:  
