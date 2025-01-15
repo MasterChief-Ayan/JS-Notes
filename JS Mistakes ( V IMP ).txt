@@ -1,0 +1,108 @@
+JS Mistakes ( V IMP ) 
+
+0)When there is dynamic dependent element creation along with button with some add/remove functionality ,
+
+->in each iteration(one loop)  create the base element, its btn and its function
+
+-> **************if new dynamic element is created due to a prev dynamic element btn, then create the new element inside the even listner***********
+
+-> refer to parent instead of document in
+<parent>.querySelector(".classname") // avoid glitches
+
+ETC:
+
+-> Q)how to confirm the storage data is that of my obj or not
+make a if condition that all its attributes are present  like this 
+Eg:
+//-------------
+if (!values || !values.Title || !values.Year || !values.Poster || !values.imbdID) 
+//-------------
+                continue;  // Skip invalid or incomplete data
+-> btn without form does not reload the website
+
+->for dynamic element, create class and class element and then dynamically assign them to the class to get the attributes desired.
+via innerHTML with = and += accordingly;
+
+//-------------
+.movie-card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 200px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+}
+
+.movie-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.movie-card h3 {
+  font-size: 1rem;
+  margin: 0.5rem;
+}
+
+.movie-card p {
+  font-size: 0.875rem;
+  margin: 0.5rem;
+}
+
+.movie-card button {
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.movie-card button:hover {
+  background-color: #45a049;
+}
+//-------------
+
+-> add button mouse over effect via css as
+//--------------
+.search-section button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.search-section button:hover {
+  background-color: #45a049;
+}
+//--------------
+->  const baseURL="http://www.omdbapi.com/";
+    const searchedURL ="?s=" + wordSearched.value;
+    const apikeyURL= "&apikey=1234567";
+    const URL = baseURL + searchedURL + apikeyURL;
+->First get to know the response then according code the fetch func
+
+
+
+1) for changing textContent dont use the style. attribute before it
+
+2) URL for API
+format:
+
+<baseURL>+"?s="+<stringToSearch>+"&apikey=121wd22";
+
+where searched value is referred here as `?s=` followed by the string to be searched `<stringToSearch>`
+
+3) For BUTTON,
+
+take the input in the function of button
+
+5) accessing element , best is to use for instead of for...in
+
+
+6) CHANGING previous HTML content , do it before js (async operations)
+
